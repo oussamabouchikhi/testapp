@@ -19,9 +19,17 @@ export class ProductsController {
   findAll(
     @Query('page') page: number,
     @Query('itemsPerPage') itemsPerPage: number,
-    @Query('search') search: string,
+    @Query('name') name: string,
+    @Query('category') category: string,
+    @Query('price') price: number,
   ) {
-    return this.productsService.findAll(page, itemsPerPage, search);
+    return this.productsService.findAll(
+      page,
+      itemsPerPage,
+      name,
+      category,
+      price,
+    );
   }
 
   @Get(':id')
@@ -40,7 +48,9 @@ export class ProductsController {
   }
 
   @Delete(':id')
-  delete(@Param('id') id: string): Promise<Product> {
+  delete(
+    @Param('id') id: string,
+  ): Promise<{ statusCode: number; message: string }> {
     return this.productsService.remove(id);
   }
 }
