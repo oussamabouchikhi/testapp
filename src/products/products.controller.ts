@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { Product } from './schemas/product.schema';
 import { ProductsService } from './products.service';
@@ -15,8 +16,12 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Get()
-  findAll(): Promise<Product[]> {
-    return this.productsService.findAll();
+  findAll(
+    @Query('page') page: number,
+    @Query('itemsPerPage') itemsPerPage: number,
+    @Query('search') search: string,
+  ) {
+    return this.productsService.findAll(page, itemsPerPage, search);
   }
 
   @Get(':id')

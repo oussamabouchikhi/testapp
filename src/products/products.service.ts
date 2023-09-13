@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Product, ProductDocument } from './schemas/product.schema';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class ProductsService {
@@ -15,8 +14,15 @@ export class ProductsService {
     return newProduct.save();
   }
 
-  async findAll(): Promise<Product[]> {
-    return this.productModel.find().exec();
+  async findAll(
+    page: number = 1,
+    itemsPerPage: number = 10,
+    search: string = '',
+  ): Promise<Product[]> {
+    const skipItems = (page - 1) * itemsPerPage;
+    const filter = search ? { name: new RegExp(search, 'i') } : {};
+
+    return this.productModel.find(filter).skip(skipItems).limit(itemsPerPage);
   }
 
   async findOne(id: string): Promise<Product> {
