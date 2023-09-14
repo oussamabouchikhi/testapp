@@ -4,6 +4,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
+import { PurchasesModule } from './purchases/purchases.module';
+import { AuthModule } from './auth/auth.module';
+import { CreditCardsModule } from './credit-cards/credit-cards.module';
 
 @Module({
   imports: [
@@ -19,6 +23,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
     ProductsModule,
+    UsersModule,
+    PurchasesModule,
+    AuthModule,
+    CreditCardsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
