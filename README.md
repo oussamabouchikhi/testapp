@@ -1,54 +1,69 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 🎯 Testapp
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+a nestjs test backend api
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## ✨ Features
 
-## Description
+- Product CRUD operations for products
+- Product purchase, tracking the purchase details.
+- Pagination and Search
+- Aggregation for Purchase Stats
+- [Random Data API](https://random-data-api.com/api/v2/credit_cards?size=100) integration
+- Containerization with Docker
+- JWT Authentication and Authorization
+- CI/CD using Github actions
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## ⬇ Installation
 
-## Installation
+Make sure you have Nodejs and @nestjs/cli installed, otherwise you'll have to install them on your machine.
 
 ```bash
+~ node -v
+~ nest --version
+```
+
+```bash
+# Clone via SSH or any other method
+$ git clone git@github.com:oussamabouchikhi/testapp.git
+
+# CD into the project
+$ cd testapp
+
+# Install the dependencies
 $ yarn install
 ```
 
-## Running the app
+## 🛠️ Configuration
+
+Rename the `example.env.development` file to `.env.development`, then edit the environment variables \
+`MONGODB_URI` your MongoDB uri
+`JWT_SECRET` key for hashing the cookie
+
+```.env.development
+MONGODB_URI=YOUR_MONGODB_URI
+
+JWT_SECRET=YOUR_JWT_SECRET
+ENCRYPT_JWT_SECRET=YOUR_JWT_ENCRIPTING_PASS
+JWT_EXPIRATION=30m
+```
+
+## 🚀 Running the app
 
 ```bash
 # development
 $ yarn run start
 
-# watch mode
-$ yarn run start:dev
+# watch mode (recomended)
+$ npm run start:dev
 
 # production mode
-$ yarn run start:prod
+$ npm run start:prod
 ```
 
-## Test
+## 🧪 Test
 
 ```bash
-# unit tests
+# unit tests (you can add the prefix --watch)
 $ yarn run test
 
 # e2e tests
@@ -58,16 +73,30 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
-## Support
+### 🐳 Docker
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Make sure docker is running on your machine. And Obviously you installed it :)
 
-## Stay in touch
+```bash
+# Build and run the container
+Docker compose up
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+After running the Above command, you access the app from <http://localhost:3000/>
 
-## License
+Other usefull commands
 
-Nest is [MIT licensed](LICENSE).
+```bash
+# Build docker images
+docker-compose build
+
+# Show docker images
+docker images
+
+# Show docker images on running container
+docker ps -a
+```
+
+### 📄 License
+
+This project is open-sourced under the [MIT license](https://opensource.org/licenses/MIT).
