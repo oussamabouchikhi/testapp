@@ -410,8 +410,6 @@ Response:
 
 </details>
 
-### Products
-
 ### 📄 License
 
 This project is open-sourced under the [MIT license](https://opensource.org/licenses/MIT).
